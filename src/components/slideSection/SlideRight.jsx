@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import HorirontalArticle from '../article/HorirontalArticle';
+import HorizontalArticle from '../article/HorizontalArticle';
 
 class SlideRight extends Component {
     constructor(props) {
@@ -13,7 +13,7 @@ class SlideRight extends Component {
         let listArticle = [];
         for (let i = 0; i < 4; i++) {
             listArticle.push(<li>
-                <HorirontalArticle/>
+                <HorizontalArticle/>
             </li>);
         }
         return (

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { HTTP } from '../../constants/contants';
 
 
-class Categories extends Component {
+class CategoriesHeader extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -70,8 +70,8 @@ class Categories extends Component {
     }
 }
 
-Categories.propTypes = {
+CategoriesHeader.propTypes = {
     Page: PropTypes.string,
 };
 
-export default Categories;
+export default CategoriesHeader;

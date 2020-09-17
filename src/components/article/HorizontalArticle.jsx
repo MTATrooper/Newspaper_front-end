@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-class HorirontalArticle extends Component {
+class HorizontalArticle extends Component {
     constructor(props) {
         super(props);
 
@@ -17,8 +17,8 @@ class HorirontalArticle extends Component {
     }
 }
 
-HorirontalArticle.propTypes = {
+HorizontalArticle.propTypes = {
 
 };
 
-export default HorirontalArticle;
+export default HorizontalArticle;
