@@ -10,15 +10,19 @@ class HorizontalArticle extends Component {
 
     render() {
         return (
-            <div className="media wow fadeInDown"> <a href="pages/single_page.html" className="media-left"> <img alt="" src="images/slider_img4.jpg" /> </a>
-                <div className="media-body"> <a href="pages/single_page.html" className="catg_title"> Aliquam malesuada diam eget turpis varius 1</a> </div>
-            </div>
+            <li>
+                <div className="media">
+                    <b><a href={this.props.Article["link"]} className="catg_title"> {this.props.Article["title"]}</a> </b>
+                    <a href={this.props.Article["link"]} className="media-left"> <img alt="" src={this.props.Article["image"]} /> </a>
+                    <div className="media-body"> {this.props.Article["summary"]}</div>
+                </div>
+            </li>
         );
     }
 }
 
 HorizontalArticle.propTypes = {
-
+    Article: PropTypes.object
 };
 
 export default HorizontalArticle;

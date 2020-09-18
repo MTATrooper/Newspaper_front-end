@@ -5,25 +5,46 @@ import SlideArticle from '../article/SlideArticle';
 class SlideLeft extends Component {
     constructor(props) {
         super(props);
-
+        this.state = {
+            content : [],
+        }
     }
 
+    // createListArt() {
+    //     let tmp = [];
+    //     for (let i = 0; i < this.props.Count; i++) {
+    //         tmp.push(<SlideArticle Article={Object(this.props.ListArticle[i])}/>)
+    //     }
+    //     this.setState({content:tmp}); 
+    // }
 
+    // componentDidUpdate(prevProps) {
+    //     if (prevProps.Count !== this.props.Count) {
+    //         this.createListArt();
+    //     }
+    // }
+    // componentWillMount(){
+    //     this.createListArt();
+    // }
     render() {
-        let listArticle = [];
-        for (let i = 0; i < 4; i++) {
-            listArticle.push(<SlideArticle/>);
+        let content = [];
+        for (let i = 0; i < this.props.Count; i++) {
+            content.push(<SlideArticle Article={Object(this.props.ListArticle[i])}/>)
         }
         return (
             <div className="slick_slider">
-                {listArticle}
+                {
+                    content
+                }
             </div>
         );
     }
 }
 
 SlideLeft.propTypes = {
-
+    Category: PropTypes.array,
+    ListArticle: PropTypes.array,
+    Count: PropTypes.number
 };
 
 export default SlideLeft;

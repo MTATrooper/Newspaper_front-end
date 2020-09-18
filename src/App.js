@@ -1,32 +1,58 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import { HTTP } from './constants/contants';
 import CategoriesHeader from './components/CategoriesHeader/CategoriesHeader';
 import Clock from './components/clock/Clock';
 import SelectPage from './components/SelectPage/SelectPage';
 import SlideSection from './components/slideSection/SlideSection';
 import CategoryVertical from './components/Category/CategoryVertical';
 import CategoryHorizontal from './components/Category/CategoryHorizontal';
+import Footer from './components/footer/Footer';
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      page: "dantri"
+      page: "dantri",
+      categories: [],
     };
     this.selectPage = this.selectPage.bind(this);
   }
 
-  selectPage() {
-    this.setState({ page: document.getElementById('select_page').value });
+  get_categories(page) {
+    fetch(`${HTTP.GET_CATEGORIES}${page}`, { method: "GET" })
+      .then(response => response.json())
+      .then(data => {
+        var results = Object.keys(data).map(key => [key, data[key]]);;
+        this.setState({ categories: results });
+      });
   }
 
+  selectPage() {
+    var page = document.getElementById('select_page').value;
+    this.setState({ page: page });
+    this.get_categories(page);
+  }
+
+  componentDidMount() {
+    this.get_categories(this.state.page);
+  }
   render() {
+    var event=[], i=0;
+    let listCategories = [];
+    this.state.categories.map(category => {
+      if (category[1].toLowerCase() === "thời sự"){
+        event = category;
+      }
+      else {
+        listCategories.push(category);
+      }
+    })
     return (
       <div>
         <div id="preloader">
           <div id="status">&nbsp;</div>
         </div>
-        <a className="scrollToTop" href="#"><i className="fa fa-angle-up" /></a>
+        {/* <a className="scrollToTop" href="#"><i className="fa fa-angle-up" /></a> */}
         <div className="container" style={{ width: '80%' }}>
           <header id="header">
             <div className="row">
@@ -51,58 +77,30 @@ class App extends Component {
               </div>
             </div>
           </header>
-          <CategoriesHeader Page={this.state.page} />
-          <SlideSection />
+          <CategoriesHeader Page={this.state.page} Categories={this.state.categories} />
+          <SlideSection Page={this.state.page} Category={event}/>
           <section id="contentSection">
             <div className="row">
               <div className="col-lg-12 col-md-12 col-sm-12">
                 <div className="left_content">
-                  <CategoryVertical/>
-                  <CategoryHorizontal/>
+                  {
+                    listCategories.map(category =>{
+                      if (i % 2 === 0){
+                        i++;
+                        return <CategoryVertical Page={this.state.page} Category={category}/>
+                      }
+                      else{
+                        i++;
+                        return <CategoryHorizontal Page={this.state.page} Category={category}/>
+                      }
+                    })
+                  }
                 </div>
               </div>
-              
+
             </div>
           </section>
-          <footer id="footer">
-            <div className="footer_top">
-              <div className="row">
-                <div className="col-lg-4 col-md-4 col-sm-4">
-                  <div className="footer_widget wow fadeInLeftBig">
-                    <h2>Flickr Images</h2>
-                  </div>
-                </div>
-                <div className="col-lg-4 col-md-4 col-sm-4">
-                  <div className="footer_widget wow fadeInDown">
-                    <h2>Tag</h2>
-                    <ul className="tag_nav">
-                      <li><a href="#">Games</a></li>
-                      <li><a href="#">Sports</a></li>
-                      <li><a href="#">Fashion</a></li>
-                      <li><a href="#">Business</a></li>
-                      <li><a href="#">Life &amp; Style</a></li>
-                      <li><a href="#">Technology</a></li>
-                      <li><a href="#">Photo</a></li>
-                      <li><a href="#">Slider</a></li>
-                    </ul>
-                  </div>
-                </div>
-                <div className="col-lg-4 col-md-4 col-sm-4">
-                  <div className="footer_widget wow fadeInRightBig">
-                    <h2>Contact</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                    <address>
-                      Perfect News,1238 S . 123 St.Suite 25 Town City 3333,USA Phone: 123-326-789 Fax: 123-546-567
-                    </address>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="footer_bottom">
-              <p className="copyright">Copyright © 2045 <a href="index.html">NewsFeed</a></p>
-              <p className="developer">Developed By Wpfreeware</p>
-            </div>
-          </footer>
+          <Footer Page={this.state.page} Tags = {this.state.categories}/>
         </div>
       </div>
     );

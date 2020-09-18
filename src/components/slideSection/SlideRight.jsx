@@ -10,19 +10,19 @@ class SlideRight extends Component {
 
 
     render() {
-        let listArticle = [];
-        for (let i = 0; i < 4; i++) {
-            listArticle.push(<li>
-                <HorizontalArticle/>
-            </li>);
-        }
         return (
             <div className="latest_post">
-                <h2><span>Latest post</span></h2>
+                <h2><span>{this.props.Category[1]}</span></h2>
                 <div className="latest_post_container">
                     <div id="prev-button"><i className="fa fa-chevron-up" /></div>
                     <ul className="latest_postnav" style={{ height: '400px' }}>
-                        {listArticle}
+                        {
+                            this.props.ListArticle.map((article, i)=>{
+                                return (
+                                    <HorizontalArticle Article = {article} key={i} />
+                                );
+                            })
+                        }
                     </ul>
                     <div id="next-button"><i className="fa  fa-chevron-down" /></div>
                 </div>
@@ -32,7 +32,9 @@ class SlideRight extends Component {
 }
 
 SlideRight.propTypes = {
-
+    Category: PropTypes.array,
+    ListArticle: PropTypes.array,
+    Count: PropTypes.number
 };
 
 export default SlideRight;

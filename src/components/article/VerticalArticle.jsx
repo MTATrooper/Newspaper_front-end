@@ -12,9 +12,9 @@ class VerticalArticle extends Component {
             <div className="single_post_content_left wow fadeInDown">
                 <ul className="business_catgnav  wow fadeInDown">
                     <li>
-                        <figure className="bsbig_fig"> <a href="pages/single_page.html" className="featured_img"> <img alt="" src="images/featured_img1.jpg" /> <span className="overlay" /> </a>
-                            <figcaption> <a href="pages/single_page.html">Proin rhoncus consequat nisl eu ornare mauris</a> </figcaption>
-                            <p>Nunc tincidunt, elit non cursus euismod, lacus augue ornare metus, egestas imperdiet nulla nisl quis mauris. Suspendisse a phare...</p>
+                        <figure className="bsbig_fig"> <a href={this.props.Article["link"]} className="featured_img"> <img alt="" src={this.props.Article["image"]} /> <span className="overlay" /> </a>
+                            <figcaption><b> <a href="pages/single_page.html">{this.props.Article["title"]}</a> </b></figcaption>
+                            <p title={this.props.Article["summary"]}>{this.props.Article["summary"]}</p>
                         </figure>
                     </li>
                 </ul>
@@ -24,7 +24,7 @@ class VerticalArticle extends Component {
 }
 
 VerticalArticle.propTypes = {
-
+    Article: PropTypes.object
 };
 
 export default VerticalArticle;

@@ -1,41 +1,50 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import HorizontalArticle from '../article/HorizontalArticle';
+import { HTTP } from '../../constants/contants';
 
 class CategoryHorizontal extends Component {
     constructor(props) {
         super(props);
+        this.state = {
+            listArticle: []
+        }
 
     }
 
+    get_news_by_category() {
+        fetch(`${HTTP.GET_NEWS_BY_CATEGORY}/${this.props.Page}/${this.props.Category[0]}/10`, { method: "GET" })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+                this.setState({ listArticle: data['results'] });
+            });
+    }
+    componentWillMount() {         
+        this.get_news_by_category();
+    }
+
+    componentDidUpdate(prevProps) {
+        if(prevProps.Category !== this.props.Category){
+            this.get_news_by_category();
+        }
+    }
 
     render() {
         return (
             <div className="fashion_technology_area">
                 <div className="fashion">
                     <div className="single_post_content">
-                        <h2><span>Fashion</span></h2>
+                        <h2><span>{this.props.Category[1]}</span></h2>
 
                         <ul className="spost_nav">
-                            <li>
-                                <div className="media wow fadeInDown"> <a href="pages/single_page.html" className="media-left"> <img alt="" src="images/post_img1.jpg" /> </a>
-                                    <div className="media-body"> <a href="pages/single_page.html" className="catg_title"> Aliquam malesuada diam eget turpis varius 1</a> </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div className="media wow fadeInDown"> <a href="pages/single_page.html" className="media-left"> <img alt="" src="images/post_img2.jpg" /> </a>
-                                    <div className="media-body"> <a href="pages/single_page.html" className="catg_title"> Aliquam malesuada diam eget turpis varius 2</a> </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div className="media wow fadeInDown"> <a href="pages/single_page.html" className="media-left"> <img alt="" src="images/post_img1.jpg" /> </a>
-                                    <div className="media-body"> <a href="pages/single_page.html" className="catg_title"> Aliquam malesuada diam eget turpis varius 3</a> </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div className="media wow fadeInDown"> <a href="pages/single_page.html" className="media-left"> <img alt="" src="images/post_img2.jpg" /> </a>
-                                    <div className="media-body"> <a href="pages/single_page.html" className="catg_title"> Aliquam malesuada diam eget turpis varius 4</a> </div>
-                                </div>
-                            </li>
+                            {
+                                this.state.listArticle.map((article, index) =>{
+                                    return (
+                                        <HorizontalArticle Article={article} key={index}/>
+                                    )
+                                })
+                            }
                         </ul>
                     </div>
                 </div>
@@ -46,7 +55,7 @@ class CategoryHorizontal extends Component {
 }
 
 CategoryHorizontal.propTypes = {
-
+    Category: PropTypes.array
 };
 
 export default CategoryHorizontal;

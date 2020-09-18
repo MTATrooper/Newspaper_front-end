@@ -815,7 +815,9 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
                 float: left;
                 display: inline;
                 width: 22%;
+                height: 460px;
                 margin: 20px;
+                overflow: hidden;
             }
             
             .business_catgnav {}
@@ -835,13 +837,14 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
             }
             
             .bsbig_fig>a img {
-                width: 100%
+                width: 100%;
+                height: 200px;
             }
             
             .bsbig_fig figcaption {
                 color: #333;
-                font-family: "Oswald", sans-serif;
-                font-size: 23px;
+                font-family: "Arial", sans-serif;
+                font-size: 16px;
                 font-weight: 300;
                 margin-top: 10px;
                 margin-bottom: 10px
@@ -875,8 +878,8 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
             }
             
             .media-left>img {
-                height: 190px;
-                width: 300px
+                height: 170px;
+                width: 250px
             }
             
             .spost_nav .media-body>a {

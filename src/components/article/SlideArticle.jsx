@@ -10,10 +10,10 @@ class SlideArticle extends Component {
 
     render() {
         return (
-            <div className="single_iteam"> <a href="pages/single_page.html"> <img src="images/slider_img4.jpg" alt="" /></a>
+            <div className="single_iteam"> <a href={this.props.Article["link"]}> <img src={this.props.Article["image"]} alt=""/></a>
                 <div className="slider_article">
-                    <h2><a className="slider_tittle" href="pages/single_page.html">Fusce eu nulla semper porttitor felis sit amet</a></h2>
-                    <p>Nunc tincidunt, elit non cursus euismod, lacus augue ornare metus, egestas imperdiet nulla nisl quis mauris. Suspendisse a pharetra urna. Morbi dui...</p>
+                    <h2><a className="slider_tittle" href={this.props.Article["link"]}>{this.props.Article["title"]}</a></h2>
+                    <p>{this.props.Article["summary"]}</p>
                 </div>
             </div>
         );
@@ -21,7 +21,7 @@ class SlideArticle extends Component {
 }
 
 SlideArticle.propTypes = {
-
+    Article: PropTypes.object
 };
 
 export default SlideArticle;

@@ -1,57 +1,44 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import {HTTP} from '../../constants/contants';
+import VerticalArticle from '../article/VerticalArticle';
 
 class CategoryVertical extends Component {
     constructor(props) {
         super(props);
-
+        this.state = {
+            listArticle: []
+        }
     }
 
+    get_news_by_category() {
+        fetch(`${HTTP.GET_NEWS_BY_CATEGORY}/${this.props.Page}/${this.props.Category[0]}/12`, { method: "GET" })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+                this.setState({ listArticle: data['results'] });
+            });
+    }
+    componentWillMount() {         
+        this.get_news_by_category();
+    }
 
+    componentDidUpdate(prevProps) {
+        if(prevProps.Category !== this.props.Category){
+            this.get_news_by_category();
+        }
+    }
     render() {
         return (
             <div className="single_post_content">
-                <h2><span>Giáo dục - khuyến học</span></h2>
-                <div className="single_post_content_left">
-                    <ul className="business_catgnav wow fadeInDown">
-                        <li>
-                            <figure className="bsbig_fig"> <a href="pages/single_page.html" className="featured_img"> <img alt="" src="images/featured_img1.jpg" /> <span className="overlay" /> </a>
-                                <figcaption> <a href="pages/single_page.html">Proin rhoncus consequat nisl eu ornare mauris</a> </figcaption>
-                                <p>Nunc tincidunt, elit non cursus euismod, lacus augue ornare metus, egestas imperdiet nulla nisl quis mauris. Suspendisse a phare...</p>
-                            </figure>
-                        </li>
-                    </ul>
-                </div>
-                <div className="single_post_content_left">
-                    <ul className="business_catgnav  wow fadeInDown">
-                        <li>
-                            <figure className="bsbig_fig"> <a href="pages/single_page.html" className="featured_img"> <img alt="" src="images/featured_img1.jpg" /> <span className="overlay" /> </a>
-                                <figcaption> <a href="pages/single_page.html">Proin rhoncus consequat nisl eu ornare mauris</a> </figcaption>
-                                <p>Nunc tincidunt, elit non cursus euismod, lacus augue ornare metus, egestas imperdiet nulla nisl quis mauris. Suspendisse a phare...</p>
-                            </figure>
-                        </li>
-                    </ul>
-                </div>
-                <div className="single_post_content_left">
-                    <ul className="business_catgnav  wow fadeInDown">
-                        <li>
-                            <figure className="bsbig_fig"> <a href="pages/single_page.html" className="featured_img"> <img alt="" src="images/featured_img1.jpg" /> <span className="overlay" /> </a>
-                                <figcaption> <a href="pages/single_page.html">Proin rhoncus consequat nisl eu ornare mauris</a> </figcaption>
-                                <p>Nunc tincidunt, elit non cursus euismod, lacus augue ornare metus, egestas imperdiet nulla nisl quis mauris. Suspendisse a phare...</p>
-                            </figure>
-                        </li>
-                    </ul>
-                </div>
-                <div className="single_post_content_left">
-                    <ul className="business_catgnav  wow fadeInDown">
-                        <li>
-                            <figure className="bsbig_fig"> <a href="pages/single_page.html" className="featured_img"> <img alt="" src="images/featured_img1.jpg" /> <span className="overlay" /> </a>
-                                <figcaption> <a href="pages/single_page.html">Proin rhoncus consequat nisl eu ornare mauris</a> </figcaption>
-                                <p>Nunc tincidunt, elit non cursus euismod, lacus augue ornare metus, egestas imperdiet nulla nisl quis mauris. Suspendisse a phare...</p>
-                            </figure>
-                        </li>
-                    </ul>
-                </div>
+                <h2><span>{this.props.Category[1]}</span></h2>
+                {
+                    this.state.listArticle.map((article, index) =>{
+                        return (
+                            <VerticalArticle Article={article} key={index}/>
+                        )
+                    })
+                }
             </div>
 
         );
@@ -59,7 +46,7 @@ class CategoryVertical extends Component {
 }
 
 CategoryVertical.propTypes = {
-
+    Category: PropTypes.array
 };
 
 export default CategoryVertical;
