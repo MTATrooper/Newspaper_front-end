@@ -1,0 +1,7 @@
+.summary2{
+    height: 130px;
+    overflow: hidden;
+}
+.summary2>li{
+    width: 100%;
+}

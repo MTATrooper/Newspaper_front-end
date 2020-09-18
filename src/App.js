@@ -7,6 +7,7 @@ import SlideSection from './components/slideSection/SlideSection';
 import CategoryVertical from './components/Category/CategoryVertical';
 import CategoryHorizontal from './components/Category/CategoryHorizontal';
 import Footer from './components/footer/Footer';
+import './App.css';
 
 class App extends Component {
   constructor(props) {

@@ -1,0 +1,19 @@
+.source{
+    bottom: 0; 
+    position: absolute;
+    width: 100%;
+    height: auto;
+    padding-right: 8px;
+}
+
+.source> i{
+    float: right; 
+}
+.summary{
+    height: 165px;
+    list-style-type: disc;
+    overflow: hidden;
+}
+.summary:hover{
+    overflow: scroll;
+}
