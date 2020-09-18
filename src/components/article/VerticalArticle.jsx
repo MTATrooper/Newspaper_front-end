@@ -13,8 +13,8 @@ class VerticalArticle extends Component {
                 <ul className="business_catgnav  wow fadeInDown">
                     <li>
                         <figure className="bsbig_fig"> <a href={this.props.Article["link"]} className="featured_img"> <img alt="" src={this.props.Article["image"]} /> <span className="overlay" /> </a>
-                            <figcaption><b> <a href="pages/single_page.html">{this.props.Article["title"]}</a> </b></figcaption>
-                            <p title={this.props.Article["summary"]}>{this.props.Article["summary"]}</p>
+                            <figcaption><b> <a href={this.props.Article["link"]}>{this.props.Article["title"]}</a> </b></figcaption>
+                            <p title={this.props.Article["summary"]}>{"("+this.props.Article["sourceName"]+") "+this.props.Article["summary"]}</p>
                         </figure>
                     </li>
                 </ul>
