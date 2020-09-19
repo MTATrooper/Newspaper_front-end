@@ -441,7 +441,7 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
                 color: #ddd;
                 background-color: #222;
                 padding: 10px 20px;
-                font-family: 'Oswald', sans-serif;
+                font-family: 'Arial', sans-serif;
                 -webkit-transition: all 0.5s;
                 -mz-transition: all 0.5s;
                 -ms-transition: all 0.5s;
@@ -473,7 +473,7 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
             
             .latest_newsarea span {
                 color: #fff;
-                font-family: Oswald, sans-serif;
+                font-family: Arial, sans-serif;
                 font-size: 15px;
                 left: 0;
                 line-height: 1.8em;
@@ -708,7 +708,7 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
             .latest_post>h2 {
                 background: none repeat scroll 0 0 #151515;
                 color: #fff;
-                font-family: 'Oswald', sans-serif;
+                font-family: 'Arial', sans-serif;
                 font-size: 18px;
                 margin-top: 5px;
                 font-weight: 400;
@@ -794,7 +794,7 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
             .single_post_content>h2 {
                 background: none repeat scroll 0 0 #151515;
                 color: #fff;
-                font-family: 'Oswald', sans-serif;
+                font-family: 'Arial', sans-serif;
                 font-size: 18px;
                 font-weight: 400;
                 margin-bottom: 10px;
@@ -883,7 +883,7 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
             }
             
             .spost_nav .media-body>a {
-                font-family: "Oswald", sans-serif
+                font-family: "Arial", sans-serif
             }
             
             .featured_img {
@@ -1122,7 +1122,7 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
             .single_sidebar>h2 {
                 background: none repeat scroll 0 0 #151515;
                 color: #fff;
-                font-family: "Oswald", sans-serif;
+                font-family: "Arial", sans-serif;
                 font-size: 18px;
                 font-weight: 400;
                 margin-bottom: 10px;
@@ -1179,7 +1179,7 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
                 font-size: 15px;
                 border-radius: 0;
                 border: none;
-                font-family: "Oswald", sans-serif;
+                font-family: "Arial", sans-serif;
                 -webkit-transition: all 0.5s;
                 -mz-transition: all 0.5s;
                 -ms-transition: all 0.5s;
@@ -1255,7 +1255,7 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
             
             .footer_widget>h2 {
                 border-bottom: 3px solid #666;
-                font-family: Oswald, arial, Georgia, serif;
+                font-family: Arial, arial, Georgia, serif;
                 font-size: 16px;
                 padding: 10px 0;
                 text-transform: uppercase
@@ -1377,7 +1377,7 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
             
             .single_page>h1 {
                 color: #333;
-                font-family: Oswald, arial, Georgia, serif;
+                font-family: Arial, arial, Georgia, serif;
                 font-size: 30px;
                 line-height: 1.4em;
                 margin: 10px 0 -10px;

@@ -64,7 +64,7 @@ class App extends Component {
                       <h2 className="page_title" style={{ color: '#088A08', fontFamily: 'Arial Black', fontWeight: 'bold' }}>Đọc báo</h2>
                     </div>
                     <div className="col-md-7">
-                      <SelectPage ID={'select_page'} OnChange={this.selectPage} />
+                      <SelectPage ID={'select_page'} PageSelected={this.state.page} OnChange={this.selectPage} Disabled={0}/>
                     </div>
                   </div>
                   <div className="header_top_midle">
@@ -88,11 +88,11 @@ class App extends Component {
                     listCategories.map(category =>{
                       if (i % 2 === 0){
                         i++;
-                        return <CategoryVertical Page={this.state.page} Category={category}/>
+                        return <CategoryVertical Page={this.state.page} Category={category} ArticleNumber={12}/>
                       }
                       else{
                         i++;
-                        return <CategoryHorizontal Page={this.state.page} Category={category}/>
+                        return <CategoryHorizontal Page={this.state.page} Category={category} ArticleNumber={10}/>
                       }
                     })
                   }

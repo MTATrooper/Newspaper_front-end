@@ -12,10 +12,9 @@ class CategoryVertical extends Component {
     }
 
     get_news_by_category() {
-        fetch(`${HTTP.GET_NEWS_BY_CATEGORY}/${this.props.Page}/${this.props.Category[0]}/12`, { method: "GET" })
+        fetch(`${HTTP.GET_NEWS_BY_CATEGORY}/${this.props.Page}/${this.props.Category[0]}/${this.props.ArticleNumber}`, { method: "GET" })
             .then(response => response.json())
             .then(data => {
-                console.log(data);
                 this.setState({ listArticle: data['results'] });
             });
     }
@@ -46,7 +45,9 @@ class CategoryVertical extends Component {
 }
 
 CategoryVertical.propTypes = {
-    Category: PropTypes.array
+    Category: PropTypes.array,
+    Page: PropTypes.string,
+    ArticleNumber: PropTypes.number
 };
 
 export default CategoryVertical;

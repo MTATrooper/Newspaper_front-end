@@ -26,7 +26,7 @@ class CategoriesHeader extends Component {
                     </div>
                     <div id="navbar" className="navbar-collapse collapse">
                         <ul className="nav navbar-nav main_nav">
-                            <li className="active"><a href="index.html"><span className="fa fa-home desktop-home" /><span className="mobile-show">Home</span></a></li>
+                            <li className="active"><a href="/"><span className="fa fa-home desktop-home" /><span className="mobile-show">Home</span></a></li>
                             {
                                 this.props.Categories.map(category => {
                                     return (

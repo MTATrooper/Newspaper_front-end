@@ -35,7 +35,7 @@ class Footer extends Component {
                         <div className="col-lg-4 col-md-4 col-sm-4">
                             <div className="footer_widget wow fadeInRightBig">
                                 <h2>Contact</h2>
-                                <p>Phạm Đức Long - Khoa Công nghệ thông tin - Học viện Kỹ thuật Quân sự</p>
+                                <p>Phạm Đức Long - Khoa Công nghệ thông tin - Học viện KT Quân sự</p>
                                 <address>
                                     236 Hoàng Quốc Việt, Cầu Giấy, Hà Nội<br/> Phone: 0983.481.417
                                 </address>
