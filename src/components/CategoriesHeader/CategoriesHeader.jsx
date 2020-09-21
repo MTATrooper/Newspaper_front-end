@@ -4,18 +4,6 @@ import PropTypes from 'prop-types';
 
 
 class CategoriesHeader extends Component {
-    constructor(props) {
-        super(props);
-
-    }
-
-    // componentDidUpdate(prevProps) {
-    //     // only update if not match I don't know what's your data is so add a 
-    //     // simple check like we use for strings.
-    //       if (prevProps.Page !== this.props.Page) {
-    //         this.get_categories();
-    //       }
-    //     }
 
     render() {
         return (

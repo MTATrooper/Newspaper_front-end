@@ -7,6 +7,7 @@ import SlideSection from './components/slideSection/SlideSection';
 import CategoryVertical from './components/Category/CategoryVertical';
 import CategoryHorizontal from './components/Category/CategoryHorizontal';
 import Footer from './components/footer/Footer';
+import SearchBox from './components/searchBox/SearchBox';
 import './App.css';
 
 class App extends Component {
@@ -67,12 +68,7 @@ class App extends Component {
                       <SelectPage ID={'select_page'} PageSelected={this.state.page} OnChange={this.selectPage} Disabled={0}/>
                     </div>
                   </div>
-                  <div className="header_top_midle">
-                    <input className="search_input" />
-                    <button className="btn-search">
-                      <i className="fa fa-search"></i>
-                    </button>
-                  </div>
+                  <SearchBox />
                   <Clock />
                 </div>
               </div>

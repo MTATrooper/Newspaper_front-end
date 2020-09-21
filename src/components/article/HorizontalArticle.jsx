@@ -3,24 +3,19 @@ import PropTypes from 'prop-types';
 import './HorizontalArticle.css';
 
 class HorizontalArticle extends Component {
-    constructor(props) {
-        super(props);
-
-    }
-
 
     render() {
         return (
             <li>
                 <div className="media">
-                    <b><a href={this.props.Article["link"]} className="catg_title" target="_blank"> {this.props.Article["title"]}</a> </b>
-                    <a href={this.props.Article["link"]} className="media-left" target="_blank"> <img alt="" src={this.props.Article["image"]} /> </a>
+                    <b><a href={this.props.Article["link"]} className="catg_title" target="_blank" rel="noopener noreferrer"> {this.props.Article["title"]}</a> </b>
+                    <a href={this.props.Article["link"]} className="media-left" target="_blank" rel="noopener noreferrer"> <img alt="" src={this.props.Article["image"]} /> </a>
                     <div className="media-body"> 
                         <b>Hightlight:</b><br/>
                         <ul className="summary2">
                             {
                                 this.props.Article["summary"].map((articleSummary, i) =>{
-                                    return <li key={i} title={articleSummary}>{"-"+ articleSummary}</li>
+                                    return <li key={i} title={articleSummary}>{"- "+ articleSummary}</li>
                                 })
                             }
                         </ul>

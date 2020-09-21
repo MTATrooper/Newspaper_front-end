@@ -6,13 +6,22 @@ import Clock from '../../components/clock/Clock';
 import SelectPage from '../../components/SelectPage/SelectPage';
 import Footer from '../../components/footer/Footer';
 import HorizontalArticle from '../../components/article/HorizontalArticle';
+import SearchBox from '../../components/searchBox/SearchBox';
+import './pagination.css';
 
 class Category extends Component {
     constructor(props) {
         super(props);
         this.state = {
             categories: [],
-            listArticle: []
+            listArticle: [],
+            currentPage: 1,
+            newsPerPage: 20,
+            pageNumberRender: {
+                minPage : 1,
+                maxPage: 5,
+                count: 5
+            }
         };
     }
 
@@ -33,6 +42,11 @@ class Category extends Component {
             });
     }
 
+    chosePage = (event) => {
+        this.setState({
+            currentPage: Number(event.target.id)
+        });
+    }
 
     componentDidMount() {
         this.get_categories(this.props.match.params.page);
@@ -40,6 +54,22 @@ class Category extends Component {
     }
 
     render() {
+        const currentPage = this.state.currentPage;
+        const newsPerPage = this.state.newsPerPage;
+        const indexOfLastNews = currentPage * newsPerPage;
+        const indexOfFirstNews = indexOfLastNews - newsPerPage;
+        const currentTodos = this.state.listArticle.slice(indexOfFirstNews, indexOfLastNews);
+        const renderTodos = currentTodos.map((todo, index) => {
+            return <HorizontalArticle Article={todo} key={index} />;
+        });
+        const pageNumbersShow = []; //Các số trang hiển thị
+        if (this.state.pageNumberRender['minPage'] > 1) pageNumbersShow.push('<<');
+        const pageNumbers = Math.ceil(this.state.listArticle.length / newsPerPage);
+        const maxPageRender = pageNumbers < this.state.pageNumberRender['maxPage'] ? pageNumbers : this.state.pageNumberRender['maxPage'];
+        for (let i = this.state.pageNumberRender['minPage']; i <= maxPageRender; i++) {
+            pageNumbersShow.push(i);
+        }
+        if (maxPageRender < pageNumbers) pageNumbersShow.push('>>');
         return (
             <div>
                 <div id="preloader">
@@ -56,15 +86,10 @@ class Category extends Component {
                                             <h2 className="page_title" style={{ color: '#088A08', fontFamily: 'Arial Black', fontWeight: 'bold' }}>Đọc báo</h2>
                                         </div>
                                         <div className="col-md-7">
-                                            <SelectPage ID={'select_page'} PageSelected={this.props.match.params.page} Disabled={1}/>
+                                            <SelectPage ID={'select_page'} PageSelected={this.props.match.params.page} Disabled={1} />
                                         </div>
                                     </div>
-                                    <div className="header_top_midle">
-                                        <input className="search_input" />
-                                        <button className="btn-search">
-                                            <i className="fa fa-search"></i>
-                                        </button>
-                                    </div>
+                                    <SearchBox Input={''} />
                                     <Clock />
                                 </div>
                             </div>
@@ -77,18 +102,35 @@ class Category extends Component {
                                 <div className="left_content">
                                     <ul className="spost_nav">
                                         {
-                                            this.state.listArticle.map((article, index) => {
-                                                return (
-                                                    <HorizontalArticle Article={article} key={index} />
-                                                )
-                                            })
+                                            renderTodos
                                         }
                                     </ul>
                                 </div>
                             </div>
-
                         </div>
                     </section>
+                    <div className="pagination-custom">
+                        <ul id="page-numbers">
+                            {
+                                pageNumbersShow.map(number => {
+                                    if (this.state.currentPage === number) {
+                                        return (
+                                            <li key={number} id={number} className="active">
+                                                {number}
+                                            </li>
+                                        )
+                                    }
+                                    else {
+                                        return (
+                                            <li key={number} id={number} onClick={this.chosePage} >
+                                                {number}
+                                            </li>
+                                        )
+                                    }
+                                })
+                            }
+                        </ul>
+                    </div>
                     <Footer Page={this.props.match.params.page} Tags={this.state.categories} />
                 </div>
             </div>

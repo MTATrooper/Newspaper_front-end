@@ -3,11 +3,6 @@ import PropTypes from 'prop-types';
 import './SlideArticle.css';
 
 class SlideArticle extends Component {
-    constructor(props) {
-        super(props);
-
-    }
-
 
     render() {
         return (

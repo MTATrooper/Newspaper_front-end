@@ -3,11 +3,6 @@ import PropTypes from 'prop-types';
 import HorizontalArticle from '../article/HorizontalArticle';
 
 class SlideRight extends Component {
-    constructor(props) {
-        super(props);
-
-    }
-
 
     render() {
         return (

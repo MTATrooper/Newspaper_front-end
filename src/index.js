@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import './index.css';
 import App from './App';
 import Category from './pages/category/Category';
@@ -11,6 +11,7 @@ ReactDOM.render(
   <BrowserRouter >
     <Switch>
       <Route path="/:page/:category" component={Category} />
+      <Route exact path="/:search" component={Search} />
       <Route path="/" component={App} />
     </Switch>
   </BrowserRouter>,
