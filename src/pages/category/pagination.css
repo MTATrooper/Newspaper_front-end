@@ -1,36 +1,38 @@
-#page-numbers {
-    list-style: none;
-    display: flex;
-    padding: 0;
-    margin: 0;
-    width: 100%;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-  
-  #page-numbers > li {
-    color: rgb(62, 140, 204);
-    user-select: none;
-    cursor: pointer;
-    margin: 0 3px;
-    padding: 0 5px;
-    border: 1px solid rgb(62, 140, 204);
-    text-align: center;
-    border-radius: 2px;
-  }
-  
-  #page-numbers > li:not(.active):hover {
-    background: rgb(62, 140, 204);
-    color: white;
-  }
-  
-  #page-numbers > li.active {
-    border-color: grey;
-    color: white;
-    background: grey;
-    cursor: default;
-  }
-  
-  .news-per-page {
-    margin-bottom: 15px;
-  }
+.pagination-custom{
+  float: left;
+  width: 100%;
+  margin: 10px 0;
+  padding: 10px;
+  background-color: #ffffff;
+
+}
+
+.page-numbers {
+  list-style: none;
+  display: flex;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  height: 45px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.page-numbers>li{
+  margin: 5px;
+  border: 1px solid #088A08;
+  padding: 10px;
+  width: 45px;
+  text-align: center;
+}
+.page-numbers > li:not(.active):hover {
+  background: #088A08;
+  color: white;
+  cursor: pointer;
+}
+.page-numbers > li.active {
+  border-color: grey;
+  color: white;
+  background: #088A08;
+  cursor: default;
+}

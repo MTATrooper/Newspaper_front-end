@@ -19,8 +19,8 @@ class Category extends Component {
             newsPerPage: 20,
             pageNumberRender: {
                 minPage : 1,
-                maxPage: 5,
-                count: 5
+                maxPage: 2,
+                count: 2
             }
         };
     }
@@ -43,9 +43,36 @@ class Category extends Component {
     }
 
     chosePage = (event) => {
-        this.setState({
-            currentPage: Number(event.target.id)
-        });
+        if(event.target.id === '<<'){
+            if(this.state.currentPage - 1 < this.state.pageNumberRender['minPage']){
+                this.setState({
+                    pageNumberRender: {
+                        minPage: this.state.currentPage - 1,
+                        maxPage: this.state.pageNumberRender['maxPage'] - 1,
+                        count: this.state.pageNumberRender['count']
+                    }
+                })
+            }
+            this.setState({ currentPage: this.state.currentPage - 1 });
+        }
+        else if(event.target.id === '>>'){
+            if(this.state.currentPage + 1 > this.state.pageNumberRender['maxPage']){
+                this.setState({
+                    pageNumberRender: {
+                        minPage: this.state.pageNumberRender['minPage'] + 1,
+                        maxPage: this.state.pageNumberRender['maxPage'] + 1,
+                        count: this.state.pageNumberRender['count']
+                    }
+                })
+            }
+            this.setState({ currentPage: this.state.currentPage + 1 });
+        }
+        else{
+            this.setState({
+                currentPage: Number(event.target.id)
+            });
+        }
+        window.scrollTo(0,0);
     }
 
     componentDidMount() {
@@ -75,7 +102,6 @@ class Category extends Component {
                 <div id="preloader">
                     <div id="status">&nbsp;</div>
                 </div>
-                {/* <a className="scrollToTop" href="#"><i className="fa fa-angle-up" /></a> */}
                 <div className="container" style={{ width: '80%' }}>
                     <header id="header">
                         <div className="row">
@@ -110,7 +136,7 @@ class Category extends Component {
                         </div>
                     </section>
                     <div className="pagination-custom">
-                        <ul id="page-numbers">
+                        <ul className="page-numbers">
                             {
                                 pageNumbersShow.map(number => {
                                     if (this.state.currentPage === number) {
