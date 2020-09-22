@@ -18,7 +18,7 @@ class SearchBox extends Component {
     render() {
         return (
             <div className="header_top_midle">
-                <input id='search_input' className="search_input" onKeyUp={this.OnKeyUp} defaultValue={this.props.Input} />
+                <input id='search_input' className="search_input" placeholder="Tìm kiếm" onKeyUp={this.OnKeyUp} defaultValue={this.props.Input} />
                 <button className="btn-search" onClick={this.search}>
                     <i className="fa fa-search"></i>
                 </button>

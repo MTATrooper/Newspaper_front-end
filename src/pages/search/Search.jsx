@@ -9,13 +9,22 @@ import SelectPage from '../../components/SelectPage/SelectPage';
 import Footer from '../../components/footer/Footer';
 import HorizontalArticle from '../../components/article/HorizontalArticle';
 import SearchBox from '../../components/searchBox/SearchBox';
+import Pagination from '../../components/pagination/Pagination';
 
 class Search extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            timer: null,
             inputSearch: '',
-            listArticle: []
+            listArticle: [],
+            currentPage: 1,
+            newsPerPage: 20,
+            pageNumberRender: {
+                minPage: 1,
+                maxPage: 2,
+                count: 2
+            }
         };
     }
 
@@ -30,20 +39,63 @@ class Search extends Component {
     componentDidMount() {
         let input = queryString.parse(this.props.location.search);
         this.search(input["input"]);
+        this.setState({timer : setTimeout(() => window.location.reload(false), 1800000)});
     }
 
+    chosePage = (event) => {
+        if (event.target.id === '<<') {
+            if (this.state.currentPage - 1 < this.state.pageNumberRender['minPage']) {
+                this.setState({
+                    pageNumberRender: {
+                        minPage: this.state.currentPage - 1,
+                        maxPage: this.state.pageNumberRender['maxPage'] - 1,
+                        count: this.state.pageNumberRender['count']
+                    }
+                })
+            }
+            this.setState({ currentPage: this.state.currentPage - 1 });
+        }
+        else if (event.target.id === '>>') {
+            if (this.state.currentPage + 1 > this.state.pageNumberRender['maxPage']) {
+                this.setState({
+                    pageNumberRender: {
+                        minPage: this.state.pageNumberRender['minPage'] + 1,
+                        maxPage: this.state.pageNumberRender['maxPage'] + 1,
+                        count: this.state.pageNumberRender['count']
+                    }
+                })
+            }
+            this.setState({ currentPage: this.state.currentPage + 1 });
+        }
+        else {
+            this.setState({
+                currentPage: Number(event.target.id)
+            });
+        }
+        window.scrollTo(0, 0);
+    }
+
+    componentWillUnmount() {
+        clearTimeout(this.state.timer);
+      }
+
     render() {
-        let listArticle = [];
-        if (this.state.listArticle.length > 0){
-            this.state.listArticle.map((article, index) => {
-                listArticle.push(<HorizontalArticle Article={article} key={index} />)
-            })
+        const currentPage = this.state.currentPage;
+        const newsPerPage = this.state.newsPerPage;
+        const indexOfLastNews = currentPage * newsPerPage;
+        const indexOfFirstNews = indexOfLastNews - newsPerPage;
+        const currentTodos = this.state.listArticle.slice(indexOfFirstNews, indexOfLastNews);
+        const renderTodos = this.state.listArticle.length > 0 ? currentTodos.map((todo, index) => {
+            return <HorizontalArticle Article={todo} key={index} />;
+        }) : <div> <p>Không có bài nào</p> </div>;
+        const pageNumbersShow = []; //Các số trang hiển thị
+        if (this.state.pageNumberRender['minPage'] > 1) pageNumbersShow.push('<<');
+        const pageNumbers = Math.ceil(this.state.listArticle.length / newsPerPage);
+        const maxPageRender = pageNumbers < this.state.pageNumberRender['maxPage'] ? pageNumbers : this.state.pageNumberRender['maxPage'];
+        for (let i = this.state.pageNumberRender['minPage']; i <= maxPageRender; i++) {
+            pageNumbersShow.push(i);
         }
-        else{
-            listArticle.push(<div>
-                <p>Không có bài nào</p>
-            </div>)
-        }
+        if (maxPageRender < pageNumbers) pageNumbersShow.push('>>');
         return (
             <div>
                 <div id="preloader">
@@ -63,20 +115,21 @@ class Search extends Component {
                                             <SelectPage ID={'select_page'} PageSelected={this.props.match.params.page} Disabled={1} />
                                         </div>
                                     </div>
-                                    <SearchBox Input={queryString.parse(this.props.location.search)['input']}/>
+                                    <SearchBox Input={queryString.parse(this.props.location.search)['input']} />
                                     <Clock />
                                 </div>
                             </div>
                         </div>
                     </header>
-                    <CategoriesHeader Page={this.props.match.params.page}  Categories={[]}/>
+                    <CategoriesHeader Page={this.props.match.params.page} Categories={[]} />
+                    <Pagination PageNumbersShow={pageNumbersShow} CurrentPage={this.state.currentPage} ChosePage={this.chosePage} />
                     <section id="contentSection">
                         <div className="row">
                             <div className="col-lg-12 col-md-12 col-sm-12">
                                 <div className="left_content">
                                     <ul className="spost_nav">
                                         {
-                                            listArticle
+                                            renderTodos
                                         }
                                     </ul>
                                 </div>
@@ -84,6 +137,7 @@ class Search extends Component {
 
                         </div>
                     </section>
+                    <Pagination PageNumbersShow={pageNumbersShow} CurrentPage={this.state.currentPage} ChosePage={this.chosePage} />
                     <Footer Page={this.props.match.params.page} Tags={[]} />
                 </div>
             </div>

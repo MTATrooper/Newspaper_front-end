@@ -42,6 +42,7 @@ class SlideArticle extends Component {
                         <SlideRight ListArticle={this.state.listArticle.slice(4, 10)} Count={6} Category={this.props.Category} />
                     </div>
                 </div>
+                <a href={`${this.props.Page}/${this.props.Category[0]}`} style={{color: '#088A08'}}>Xem thêm &gt;&gt; </a>
             </section>
         );
     }

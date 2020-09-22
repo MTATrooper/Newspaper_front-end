@@ -7,11 +7,11 @@ class SlideArticle extends Component {
     render() {
         return (
             <div className="single_iteam"> 
-                <a href={this.props.Article["link"]}> 
+                <a href={this.props.Article["link"]} target="_blank" rel="noopener noreferrer"> 
                     <img src={this.props.Article["image"]} alt=""/>
                 </a>
                 <div className="slider_article">
-                    <h2><a className="slider_tittle" href={this.props.Article["link"]}>{this.props.Article["title"]}</a></h2>
+                    <h2><a className="slider_tittle" href={this.props.Article["link"]} target="_blank" rel="noopener noreferrer">{this.props.Article["title"]}</a></h2>
                     <b>Hightlight:</b><br/>
                     <p title={this.props.Article["summary"]}>{this.props.Article["summary"]}</p>
                     <div> <i>Nguồn: {this.props.Article["sourceName"]}</i></div>

@@ -14,6 +14,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      timer: null,
       page: "dantri",
       categories: [],
     };
@@ -37,6 +38,11 @@ class App extends Component {
 
   componentDidMount() {
     this.get_categories(this.state.page);
+    this.setState({timer : setTimeout(() => window.location.reload(false), 1800000)});
+  }
+
+  componentWillUnmount() {
+    clearTimeout(this.state.timer);
   }
   render() {
     var event=[], i=0;

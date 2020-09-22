@@ -18,7 +18,7 @@ jQuery(document).ready(function() {
     });
     // latest post slider call 
     $('.latest_postnav').newsTicker({
-        row_height: 133.333,
+        row_height: 130,
         speed: 1000,
         prevButton: $('#prev-button'),
         nextButton: $('#next-button')

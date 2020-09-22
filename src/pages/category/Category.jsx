@@ -7,12 +7,13 @@ import SelectPage from '../../components/SelectPage/SelectPage';
 import Footer from '../../components/footer/Footer';
 import HorizontalArticle from '../../components/article/HorizontalArticle';
 import SearchBox from '../../components/searchBox/SearchBox';
-import './pagination.css';
+import Pagination from '../../components/pagination/Pagination';
 
 class Category extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            timer: null,
             categories: [],
             listArticle: [],
             currentPage: 1,
@@ -78,7 +79,12 @@ class Category extends Component {
     componentDidMount() {
         this.get_categories(this.props.match.params.page);
         this.get_news_by_category(this.props.match.params.page, this.props.match.params.category);
+        this.setState({timer : setTimeout(() => window.location.reload(false), 1800000)});
     }
+
+    componentWillUnmount() {
+        clearTimeout(this.state.timer);
+      }
 
     render() {
         const currentPage = this.state.currentPage;
@@ -122,6 +128,7 @@ class Category extends Component {
                         </div>
                     </header>
                     <CategoriesHeader Page={this.props.match.params.page} Categories={this.state.categories} />
+                    <Pagination PageNumbersShow={pageNumbersShow} CurrentPage={this.state.currentPage} ChosePage={this.chosePage}/>
                     <section id="contentSection">
                         <div className="row">
                             <div className="col-lg-12 col-md-12 col-sm-12">
@@ -135,28 +142,7 @@ class Category extends Component {
                             </div>
                         </div>
                     </section>
-                    <div className="pagination-custom">
-                        <ul className="page-numbers">
-                            {
-                                pageNumbersShow.map(number => {
-                                    if (this.state.currentPage === number) {
-                                        return (
-                                            <li key={number} id={number} className="active">
-                                                {number}
-                                            </li>
-                                        )
-                                    }
-                                    else {
-                                        return (
-                                            <li key={number} id={number} onClick={this.chosePage} >
-                                                {number}
-                                            </li>
-                                        )
-                                    }
-                                })
-                            }
-                        </ul>
-                    </div>
+                    <Pagination PageNumbersShow={pageNumbersShow} CurrentPage={this.state.currentPage} ChosePage={this.chosePage}/>
                     <Footer Page={this.props.match.params.page} Tags={this.state.categories} />
                 </div>
             </div>

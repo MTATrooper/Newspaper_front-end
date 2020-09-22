@@ -48,6 +48,7 @@ class CategoryHorizontal extends Component {
                         </ul>
                     </div>
                 </div>
+                <a href={`${this.props.Page}/${this.props.Category[0]}`} style={{color: '#088A08'}}>Xem thêm &gt;&gt; </a>
             </div>
 
         );
