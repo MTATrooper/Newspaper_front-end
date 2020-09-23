@@ -3,7 +3,12 @@ import PropTypes from 'prop-types';
 import './HorizontalArticle.css';
 
 class HorizontalArticle extends Component {
-
+    validateTime(time){
+        let hour = time.split(' ')[1];
+        let date = time.split(' ')[0];
+        let date_split = date.split('/');
+        return `${date_split[2]}/${date_split[1]}/${date_split[0]} ${hour}`;
+    }
     render() {
         return (
             <li>
@@ -20,7 +25,7 @@ class HorizontalArticle extends Component {
                             }
                         </ul>
                         
-                        <div> <i>Nguồn: {this.props.Article["sourceName"]}</i></div>
+                        <div> <i>Nguồn: {this.props.Article["sourceName"]}</i> <span className="time_write">{this.validateTime(this.props.Article["date"])}</span></div>
                     </div>
                     
                 </div>

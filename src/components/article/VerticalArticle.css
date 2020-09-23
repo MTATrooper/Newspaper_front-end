@@ -7,13 +7,17 @@
 }
 
 .source> i{
-    float: right; 
+    float: left; 
 }
 .summary{
-    height: 165px;
+    height: 160px;
     list-style-type: disc;
     overflow: hidden;
 }
 .summary:hover{
     overflow: scroll;
+}
+.source>span{
+    float: right;
+    padding-right: 10px;
 }

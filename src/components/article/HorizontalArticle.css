@@ -5,3 +5,7 @@
 .summary2>li{
     width: 100%;
 }
+.time_write{
+    float: right;
+    padding-right: 10px;
+}

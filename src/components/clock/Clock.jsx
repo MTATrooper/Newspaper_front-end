@@ -6,7 +6,7 @@ class Clock extends Component {
         this.state = {
             time : "",
             tday : ["Chủ Nhật", "Thứ Hai", "Thứ Ba", "Thứ Tư", "Thứ Năm", "Thứ Sáu", "Thứ Bảy"],
-            tmonth : ["01", "02", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"]
+            tmonth : ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"]
         }
         this.GetClock = this.GetClock.bind(this);
     }

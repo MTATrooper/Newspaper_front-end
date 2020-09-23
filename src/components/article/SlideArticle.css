@@ -4,6 +4,13 @@
     padding: 3px;
     display: inline-block
 }
+.slider_article>div>span {
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0.4);
+    color: #fff;
+    padding: 3px;
+    display: inline-block;
+    float: right;
+}
 .slider_article>b {
     background: none repeat scroll 0 0 rgba(0, 0, 0, 0.4);
     color: #fff;

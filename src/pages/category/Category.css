@@ -1,0 +1,11 @@
+.dateBox{
+    float: left;
+    width: 100%;
+    margin: 10px 0;
+    padding: 10px;
+    background-color: #ffffff;
+}
+#datePicker{
+    height: 40px;
+    margin-left: 10px;
+}
