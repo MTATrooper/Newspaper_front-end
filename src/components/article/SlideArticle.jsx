@@ -5,7 +5,7 @@ import './SlideArticle.css';
 class SlideArticle extends Component {
     validateTime(time){
         let tmp = String(time);
-        let hour = tmp.split(' ')[1];
+        let hour = tmp.split(' ').length > 1 ? tmp.split(' ')[1]: '';
         let date = tmp.split(' ')[0];
         let date_split = date.split('/');
         return `${date_split[2]}/${date_split[1]}/${date_split[0]} ${hour}`;

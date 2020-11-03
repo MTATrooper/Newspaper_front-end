@@ -4,7 +4,7 @@ import './HorizontalArticle.css';
 
 class HorizontalArticle extends Component {
     validateTime(time){
-        let hour = time.split(' ')[1];
+        let hour = time.split(' ').length > 1 ? time.split(' ')[1]: '';
         let date = time.split(' ')[0];
         let date_split = date.split('/');
         return `${date_split[2]}/${date_split[1]}/${date_split[0]} ${hour}`;

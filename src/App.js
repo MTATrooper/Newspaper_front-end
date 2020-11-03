@@ -48,7 +48,7 @@ class App extends Component {
     var event=[], i=0;
     let listCategories = [];
     this.state.categories.map(category => {
-      if (category[1].toLowerCase() === "thời sự"){
+      if (category[1].toLowerCase() === "thời sự" || category[1].toLowerCase() === "world"){
         event = category;
       }
       else {
