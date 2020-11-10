@@ -64,7 +64,7 @@ class App extends Component {
           <div id="status">&nbsp;</div>
         </div>
         {/* <a className="scrollToTop" href="#"><i className="fa fa-angle-up" /></a> */}
-        <div className="container" style={{ width: '80%' }}>
+        <div className="container" style={{ width: '1460px' }}>
           <header id="header">
             <div className="row">
               <div className="col-lg-12 col-md-12 col-sm-12" style={{ marginBottom: '5px' }}>

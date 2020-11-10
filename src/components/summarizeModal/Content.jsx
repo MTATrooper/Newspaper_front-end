@@ -21,7 +21,11 @@ const Content = ({ close }) => {
         .then(function(response){
           console.log(response);
           let sents_summ = response.data['results'];
-          document.getElementById('textSummary').value = sents_summ
+          let tmp = '';
+          for (let i = 0; i < sents_summ.length; i++){
+            tmp += sents_summ[i] + '\n';
+          }
+          document.getElementById('textSummary').value = tmp
         })
   }
   return (
