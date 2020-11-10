@@ -15,7 +15,7 @@ class Footer extends Component {
                         </div>
                         <div className="col-lg-4 col-md-4 col-sm-4">
                             <div className="footer_widget wow fadeInDown">
-                                <h2>Tag</h2>
+                                <h2>Danh mục</h2>
                                 <ul className="tag_nav">
                                     {
                                         this.props.Tags.map((tag) => {
@@ -29,10 +29,10 @@ class Footer extends Component {
                         </div>
                         <div className="col-lg-4 col-md-4 col-sm-4">
                             <div className="footer_widget wow fadeInRightBig">
-                                <h2>Contact</h2>
+                                <h2>Liên hệ</h2>
                                 <p>Phạm Đức Long - Khoa Công nghệ thông tin - Học viện KT Quân sự</p>
                                 <address>
-                                    236 Hoàng Quốc Việt, Cầu Giấy, Hà Nội<br/> Phone: 0983.481.417
+                                    236 Hoàng Quốc Việt, Cầu Giấy, Hà Nội<br/> Mail: long96nb@gmail.com
                                 </address>
                             </div>
                         </div>

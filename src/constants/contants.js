@@ -3,5 +3,6 @@ export const HTTP = {
     GET_CATEGORIES: `${SERVER}/getcategories/`,
     GET_PAGES: `${SERVER}/getpages`,
     GET_NEWS_BY_CATEGORY: `${SERVER}/getnews`,
-    SEARCH_NEWS: `${SERVER}/search`
+    SEARCH_NEWS: `${SERVER}/search`,
+    SUMMARIZE: `${SERVER}/summarize`,
 }

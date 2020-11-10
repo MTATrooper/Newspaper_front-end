@@ -40,3 +40,32 @@ body{
     transform: rotate(360deg);
   }
 }
+
+.summarize_btn {
+  top: 105px;
+  display: block;
+  font-size: 32px;
+  font-weight: bold;
+  height: 35px;
+  position: fixed;
+  right: 75px;
+  text-align: center;
+  text-decoration: none;
+  width: 35px;
+  z-index: 9;
+  border: 1px solid;
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  -ms-transition: all 0.5s;
+  -o-transition: all 0.5s;
+  transition: all 0.5s;
+  background-image: url('constants/summarize.png');
+  background-repeat: no-repeat;
+  color: transparent;
+}
+
+.summarize_btn:hover,
+.summarize_btn:focus {
+  text-decoration: none;
+  outline: none
+}

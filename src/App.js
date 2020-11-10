@@ -8,6 +8,7 @@ import CategoryVertical from './components/Category/CategoryVertical';
 import CategoryHorizontal from './components/Category/CategoryHorizontal';
 import Footer from './components/footer/Footer';
 import SearchBox from './components/searchBox/SearchBox';
+import SummarizeModal from './components/summarizeModal/SummarizeModal';
 import './App.css';
 
 class App extends Component {
@@ -57,6 +58,8 @@ class App extends Component {
     })
     return (
       <div>
+        {/* <button className="summarize_btn"></button> */}
+        <SummarizeModal />
         <div id="preloader">
           <div id="status">&nbsp;</div>
         </div>
